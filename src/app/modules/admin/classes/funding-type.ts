@@ -1,0 +1,4 @@
+export enum FundingType {
+    DONATIONBASED = 'DONATIONBASED',
+    EQUITYBASED = 'EQUITYBASED'
+  }
