@@ -1,0 +1,70 @@
+<div class="search-form">
+    <h2>Search Campaigns</h2>
+    <form (ngSubmit)="applyFilters()">
+      <div>
+        <label for="title">Title:</label>
+        <input id="title" [(ngModel)]="searchCriteria.title" name="title">
+      </div>
+      <div>
+        <label for="targetMin">Target Amount (Min):</label>
+        <input id="targetMin" type="number" [(ngModel)]="searchCriteria.targetMin" name="targetMin">
+        <label for="targetMax">Target Amount (Max):</label>
+        <input id="targetMax" type="number" [(ngModel)]="searchCriteria.targetMax" name="targetMax">
+      </div>
+      <div>
+        <label for="startDate">Start Date:</label>
+        <input id="startDate" type="date" [(ngModel)]="searchCriteria.startDate" name="startDate">
+        <label for="endDate">End Date:</label>
+        <input id="endDate" type="date" [(ngModel)]="searchCriteria.endDate" name="endDate">
+      </div>
+      <div>
+        <label for="fundingType">Funding Type:</label>
+        <select id="fundingType" [(ngModel)]="searchCriteria.fundingType" name="fundingType">
+          <option value="">All</option>
+          <option value="DONATIONBASED">Donation Based</option>
+          <option value="EQUITYBASED">Equity Based</option>
+        </select>
+      </div>
+      <button type="submit">Apply Filters</button>
+    </form>
+  </div>
+
+
+<div class="campaign-list">
+    <h2>Approved Campaigns</h2>
+    <table>
+        <thead>
+            <tr>
+              <th (click)="sortCampaigns('title')" [ngClass]="{'sorted-asc': sortColumn === 'title' && sortDirection === 'asc', 'sorted-desc': sortColumn === 'title' && sortDirection === 'desc'}">Title</th>
+              <th (click)="sortCampaigns('description')" [ngClass]="{'sorted-asc': sortColumn === 'description' && sortDirection === 'asc', 'sorted-desc': sortColumn === 'description' && sortDirection === 'desc'}">Description</th>
+              <th (click)="sortCampaigns('targetAmount')" [ngClass]="{'sorted-asc': sortColumn === 'targetAmount' && sortDirection === 'asc', 'sorted-desc': sortColumn === 'targetAmount' && sortDirection === 'desc'}">Target Amount</th>
+              <th (click)="sortCampaigns('currentAmount')" [ngClass]="{'sorted-asc': sortColumn === 'currentAmount' && sortDirection === 'asc', 'sorted-desc': sortColumn === 'currentAmount' && sortDirection === 'desc'}">Current Amount</th>
+              <th (click)="sortCampaigns('startDate')" [ngClass]="{'sorted-asc': sortColumn === 'startDate' && sortDirection === 'asc', 'sorted-desc': sortColumn === 'startDate' && sortDirection === 'desc'}">Start Date</th>
+              <th (click)="sortCampaigns('endDate')" [ngClass]="{'sorted-asc': sortColumn === 'endDate' && sortDirection === 'asc', 'sorted-desc': sortColumn === 'endDate' && sortDirection === 'desc'}">End Date</th>
+              <th (click)="sortCampaigns('fundingType')" [ngClass]="{'sorted-asc': sortColumn === 'fundingType' && sortDirection === 'asc', 'sorted-desc': sortColumn === 'fundingType' && sortDirection === 'desc'}">Funding Type</th>
+              <th>Action</th>
+              <th>Details</th>
+            </tr>
+          </thead>
+          
+      <tbody>
+        <tr *ngFor="let campaign of campaigns">
+          <td>{{ campaign.title }}</td>
+          <td>{{ campaign.description }}</td>
+          <td>{{ campaign.targetAmount }}</td>
+          <td>{{ campaign.currentAmount }}</td>
+          <td>{{ campaign.startDate | date }}</td>
+          <td>{{ campaign.endDate | date }}</td>
+          <td>{{ campaign.fundingType }}</td>
+          <td>
+            <button *ngIf="campaign.fundingType === 'DONATIONBASED'" (click)="openDonateOrInvest(campaign)">DONATE</button>
+            <button *ngIf="campaign.fundingType === 'EQUITYBASED'" (click)="openDonateOrInvest(campaign)">INVEST</button>
+          </td>
+          <td>
+            <button (click)="viewDetails(campaign)">DETAILS</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  

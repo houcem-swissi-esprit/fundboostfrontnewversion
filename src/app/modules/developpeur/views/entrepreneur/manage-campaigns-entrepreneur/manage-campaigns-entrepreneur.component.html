@@ -1,0 +1,59 @@
+<!-- manage-campaigns-entrepreneur.component.html -->
+<div class="container">
+    <h2>My Campaigns</h2>
+    
+    <!-- Toggle View Button -->
+    <button (click)="toggleView()">
+      {{ viewAsTable ? 'Switch to List View' : 'Switch to Table View' }}
+    </button>
+  
+    <!-- List View -->
+    <ul *ngIf="!viewAsTable">
+      <li *ngFor="let campaign of sortedCampaigns">
+        <h3>{{ campaign.title }}</h3>
+        <p>{{ campaign.description }}</p>
+        <p>Status: {{ campaign.status }}</p>
+        <p>Funding Type: {{ campaign.fundingType }}</p>
+        <p>Target Amount: {{ campaign.targetAmount }}</p>
+        <p>Current Amount: {{ campaign.currentAmount }}</p>
+        <p>Start Date: {{ campaign.startDate | date }}</p>
+        <p>End Date: {{ campaign.endDate | date }}</p>
+        <button (click)="viewCampaignDetails(campaign.id)">View Details</button>
+      </li>
+    </ul>
+  
+    <!-- Table View -->
+    <table *ngIf="viewAsTable">
+      <thead>
+        <tr>
+          <th (click)="sortColumn('title')">Title</th>
+          <th (click)="sortColumn('description')">Description</th>
+          <th (click)="sortColumn('status')">Status</th>
+          <th (click)="sortColumn('fundingType')">Funding Type</th>
+          <th (click)="sortColumn('targetAmount')">Target Amount</th>
+          <th (click)="sortColumn('currentAmount')">Current Amount</th>
+          <th (click)="sortColumn('startDate')">Start Date</th>
+          <th (click)="sortColumn('endDate')">End Date</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let campaign of sortedCampaigns">
+          <td data-label="Title">{{ campaign.title }}</td>
+          <td data-label="Description">{{ campaign.description }}</td>
+          <td data-label="Status">{{ campaign.status }}</td>
+          <td data-label="Funding Type">{{ campaign.fundingType }}</td>
+          <td data-label="Target Amount">{{ campaign.targetAmount }}</td>
+          <td data-label="Current Amount">{{ campaign.currentAmount }}</td>
+          <td data-label="Start Date">{{ campaign.startDate | date }}</td>
+          <td data-label="End Date">{{ campaign.endDate | date }}</td>
+          <td data-label="Actions">
+            <button (click)="viewCampaignDetails(campaign.id)">View Details</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
+  
+  

@@ -15,8 +15,8 @@ export class Campaign {
   status: CampaignStatus;
   fundingType: FundingType;
   creator: User;
-  investments: Set<Investment>;
-  donations: Set<Donation>;
+  investments?: Set<Investment>;
+  donations?: Set<Donation>;
 
   /*constructor(
     id: number,
@@ -46,3 +46,5 @@ export class Campaign {
     this.donations = donations;
   }*/
 }
+
+export { FundingType, CampaignStatus };

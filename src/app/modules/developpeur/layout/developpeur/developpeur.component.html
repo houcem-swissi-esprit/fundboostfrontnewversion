@@ -185,18 +185,20 @@ Page content START -->
 							<!-- Dashboard menu -->
 							<div class="list-group list-group-dark list-group-borderless collapse-list">
 								<a class="list-group-item" data-bs-toggle="collapse" href="#collapseauthentication" role="button" aria-expanded="false" aria-controls="collapseauthentication">
-									Services
+									Crowdfunding
 								</a>
 								
 								<!-- Submenu -->
 								<ul class="nav collapse flex-column" id="collapseauthentication" data-bs-parent="#navbar-sidebar">
-									<li class="nav-item"> <a class="nav-link" routerLink="/developpeur/create-campaign">Create campaign for crowdfunding</a>
+									<li class="nav-item"> <a class="nav-link" routerLink="/developpeur/create-campaign">Create campaign</a>
 									</li>
-									<li class="nav-item"> <a class="nav-link" routerLink="/developpeur/pack">Campaigns list</a></li>
-									<li class="nav-item"> <a class="nav-link" routerLink="/developpeur/pack">Donations list</a></li>
+									<li class="nav-item"> <a class="nav-link" routerLink="/developpeur/mycampaigns">My campaigns</a></li>
+									<li class="nav-item"> <a class="nav-link" routerLink="/developpeur/campaigns-frontoffice">All campaigns</a></li>
+									<li class="nav-item"> <a class="nav-link" routerLink="/developpeur/pack">Donations</a></li>
+									<li class="nav-item"> <a class="nav-link" routerLink="/developpeur/pack">Investments</a></li>
 								</ul>
 								<a class="list-group-item" data-bs-toggle="collapse" href="#collapseauthentication" role="button" aria-expanded="false" aria-controls="collapseauthentication">
-									Services
+									Dashboard
 								</a>
 								<ul class="nav collapse flex-column" id="collapseauthentication" data-bs-parent="#navbar-sidebar">
 									<li class="nav-item"> <a class="nav-link" routerLink="/developpeur/credit">Donations</a>
@@ -228,6 +230,11 @@ Page content START -->
 					</div>
 				</div>
 				<!-- Responsive offcanvas body END -->
+			</div>
+			<div class="col-xl-9">
+				<router-outlet>
+					
+				</router-outlet>
 			</div>
 			<!-- Left sidebar END -->
 

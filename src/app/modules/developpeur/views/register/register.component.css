@@ -1,0 +1,38 @@
+/* register.component.css */
+.register-container {
+    width: 300px;
+    margin: 0 auto;
+  }
+  
+  .register-container h2 {
+    text-align: center;
+  }
+  
+  .register-container form div {
+    margin-bottom: 10px;
+  }
+  
+  .register-container form div label {
+    display: block;
+  }
+  
+  .register-container form div input,
+  .register-container form div select {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+  }
+  
+  .register-container form div .error {
+    color: red;
+    font-size: 0.8em;
+  }
+  
+  .register-container form button {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }

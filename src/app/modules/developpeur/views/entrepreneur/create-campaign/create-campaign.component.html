@@ -1,0 +1,64 @@
+<!-- create-campaign.component.html -->
+<div class="container">
+  <form [formGroup]="campaignForm" (ngSubmit)="onSubmit()">
+    <div>
+      <label for="title">Title</label>
+      <input id="title" formControlName="title" [class.is-invalid]="isControlInvalid('title')">
+      <div *ngIf="isControlInvalid('title')" class="invalid-feedback">
+        Title is required.
+      </div>
+    </div>
+
+    <div>
+      <label for="description">Description</label>
+      <textarea id="description" formControlName="description" [class.is-invalid]="isControlInvalid('description')"></textarea>
+      <div *ngIf="isControlInvalid('description')" class="invalid-feedback">
+        Description is required.
+      </div>
+    </div>
+
+    <div>
+      <label for="targetAmount">Target Amount</label>
+      <input id="targetAmount" type="number" formControlName="targetAmount" [class.is-invalid]="isControlInvalid('targetAmount')">
+      <div *ngIf="isControlInvalid('targetAmount')" class="invalid-feedback">
+        Target Amount is required and must be a positive number.
+      </div>
+    </div>
+
+    <div>
+      <label for="startDate">Start Date</label>
+      <input id="startDate" type="date" formControlName="startDate" [class.is-invalid]="isControlInvalid('startDate')">
+      <div *ngIf="isControlInvalid('startDate')" class="invalid-feedback">
+        Start Date is required.
+      </div>
+    </div>
+
+    <div>
+      <label for="endDate">End Date</label>
+      <input id="endDate" type="date" formControlName="endDate" [class.is-invalid]="isControlInvalid('endDate')">
+      <div *ngIf="isControlInvalid('endDate')" class="invalid-feedback">
+        End Date is required and must be after Start Date.
+      </div>
+    </div>
+
+    <div>
+      <label for="fundingType">Funding Type</label>
+      <select id="fundingType" formControlName="fundingType" [class.is-invalid]="isControlInvalid('fundingType')">
+        <option *ngFor="let type of fundingTypes" [value]="type">{{ type }}</option>
+      </select>
+      <div *ngIf="isControlInvalid('fundingType')" class="invalid-feedback">
+        Funding Type is required.
+      </div>
+    </div>
+
+    <button type="submit" [disabled]="campaignForm.invalid">Create Campaign</button>
+
+    <div *ngIf="successMessage" class="alert alert-success">
+      {{ successMessage }}
+    </div>
+
+    <div *ngIf="errorMessage" class="alert alert-danger">
+      {{ errorMessage }}
+    </div>
+  </form>
+</div>

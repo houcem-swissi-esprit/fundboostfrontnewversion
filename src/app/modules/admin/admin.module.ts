@@ -8,7 +8,7 @@ import { AdminComponent } from './layout/admin/admin.component';
 import { ListDeveloppeurComponent } from './views/list-developpeur/list-developpeur.component';
 import { AccountListComponent } from './views/account-list/account-list.component';
 import { NotificationRequestComponent } from './views/manage-notifications/notification-request/notification-request.component';
-import { ViewCampaignsComponent } from './views/view-campaigns/view-campaigns/view-campaigns.component';
+import { ManageCampaignsAdminComponent } from './views/manage-campaigns-admin/manage-campaigns-admin.component';
 
 
 @NgModule({
@@ -17,7 +17,7 @@ import { ViewCampaignsComponent } from './views/view-campaigns/view-campaigns/vi
     ListDeveloppeurComponent,
     AccountListComponent,
     NotificationRequestComponent,
-    ViewCampaignsComponent,
+    ManageCampaignsAdminComponent,
     
   ],
   imports: [
